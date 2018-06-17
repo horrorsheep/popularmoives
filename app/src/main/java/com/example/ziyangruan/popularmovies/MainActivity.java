@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.ziyangruan.popularmovies.model.Movie;
 import com.example.ziyangruan.popularmovies.utils.JsonUtils;
@@ -26,8 +25,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
     private MovieAdapter mAdapter;
     @BindView(R.id.rvNumbers)
     RecyclerView mMovieList;
-    private Toast mToast;
-    private static final String API_KEY = "0e742a14316d5900fb0a3682058e27db";
+    private static final String API_KEY = null; //You should insert an API key here.
     private static final String TAG = "MovieFetchr";
     private ArrayList<Movie> movies = new ArrayList<>();
 
