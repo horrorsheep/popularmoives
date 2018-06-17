@@ -4,4 +4,8 @@
     <string name="top_rate">By top rated</string>
     <string name="most_popular">By most popular</string>
     <string name="movie_picture_content_description">Movie poster</string>
+    <string name="title">Title:</string>
+    <string name="releaseddate">Released Date:</string>
+    <string name="userrating">User Rating:</string>
+    <string name="overview">Overview:</string>
 </resources>

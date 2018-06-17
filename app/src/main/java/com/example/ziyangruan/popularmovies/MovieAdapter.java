@@ -2,10 +2,7 @@
 package com.example.ziyangruan.popularmovies;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,20 +10,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.ziyangruan.popularmovies.model.Movie;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder> {
     private static final String TAG = MovieAdapter.class.getSimpleName();
     final private ItemClickListener mItemClickListener;
     private int mNumberItems;
+    private ArrayList<Movie> movies;
     private static int viewHolderCount;
     private Context context;
 
-    public MovieAdapter(ItemClickListener mItemClickListener, int mNumberItems, Context context) {
+    public MovieAdapter(ItemClickListener mItemClickListener, int mNumberItems, Context context, ArrayList<Movie> movies) {
         this.mItemClickListener = mItemClickListener;
         this.mNumberItems = mNumberItems;
         viewHolderCount = 0;
         this.context = context;
+        this.movies = movies;
     }
 
     @NonNull
@@ -47,9 +49,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
     @Override
     public void onBindViewHolder(@NonNull MovieHolder holder, int position) {
         Log.d(TAG, "#" + position);
-        Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(holder.mImageView);
-
-        //holder.bind(position);
+        Picasso.with(context).load(movies.get(position).getImage()).into(holder.mImageView);
     }
 
     @Override
@@ -64,10 +64,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieHolder>
             super(itemView);
             mImageView = (ImageView) itemView.findViewById(R.id.movie_poster);
             itemView.setOnClickListener(this);
-        }
-
-        void bind(int pos) {
-            Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(mImageView);
         }
 
         @Override
