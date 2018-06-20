@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
     private MovieAdapter mAdapter;
     @BindView(R.id.rvNumbers)
     RecyclerView mMovieList;
-    private static final String API_KEY = null; //You should insert an API key here.
+    private static final String API_KEY = "0e742a14316d5900fb0a3682058e27db"; //You should insert an API key here.
     private static final String TAG = "MovieFetchr";
     private ArrayList<Movie> movies = new ArrayList<>();
 
@@ -34,9 +34,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Item
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        new FetchPopularTask().execute();
+
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         mMovieList.setLayoutManager(layoutManager);
+        if (savedInstanceState != null && savedInstanceState.containsKey("movies")) {
+            movies = savedInstanceState.getParcelableArrayList("movies");
+            setupAdapter();
+        } else {
+            new FetchPopularTask().execute();
+        }
 
     }
 

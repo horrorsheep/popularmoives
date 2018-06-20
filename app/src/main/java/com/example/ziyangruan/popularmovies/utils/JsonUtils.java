@@ -56,7 +56,7 @@ public class JsonUtils {
                             result.getString("release_date"),
                             result.getString("vote_average"),
                             result.getString("overview"),
-                            "http://image.tmdb.org/t/p/w342" + result.getString("poster_path")));
+                            "http://image.tmdb.org/t/p/w780" + result.getString("poster_path")));
             }
             return movies;
         } catch (JSONException e) {
